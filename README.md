@@ -20,3 +20,7 @@ After [start the server](#starting-the-server) then run the command:
 ## Private files
 
 Files at `app > frontend > static > private` will be only available for logged user.
+
+## Django collect statics
+
+    $ docker-compose exec backend python manage.py collectstatic --no-input

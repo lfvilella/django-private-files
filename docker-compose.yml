@@ -1,12 +1,31 @@
 version: '3.7' 
 services: 
-  web: 
+  backend:
     build: app 
     ports: 
-      - '8000:8000'
+      - '8000'
     volumes:
       - .:/deploy
     working_dir: /deploy/app
-    # stdin_open: true
-    # tty: true
+    stdin_open: true
+    tty: true
     # command: ["/bin/bash"]
+    networks:
+      - backnet
+
+  proxy:
+    build: proxy
+    restart: always
+    depends_on:
+      - backend
+    volumes:
+      - ./collectstatic:/collectstatic
+    ports:
+      - 80:80
+    networks:
+      - backnet
+      - nginx-gateway
+
+networks:
+  backnet:
+  nginx-gateway:
