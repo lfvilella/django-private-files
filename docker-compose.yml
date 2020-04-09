@@ -1,0 +1,12 @@
+version: '3.7' 
+services: 
+  web: 
+    build: app 
+    ports: 
+      - '8000:8000'
+    volumes:
+      - .:/deploy
+    working_dir: /deploy/app
+    # stdin_open: true
+    # tty: true
+    # command: ["/bin/bash"]
