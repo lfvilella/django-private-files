@@ -15,7 +15,7 @@ Make sure you have [Docker](https://docs.docker.com/get-docker/) and [docker-com
 
 After [start the server](#starting-the-server) then run the command:
 
-    $ docker-compose exec web python manage.py createsuperuser
+    $ docker-compose exec backend python manage.py createsuperuser
 
 ## Private files
 

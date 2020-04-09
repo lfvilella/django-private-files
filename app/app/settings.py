@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#^fo)cj%g14*a#@-t)4fmr^jj=np%+8p1jqjr=o464^d9##h=b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -127,8 +127,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'collectstatic')
 
-PRIVATE_STATICFILES_FOLDER = 'private'
+PRIVATE_STATICFILES_FOLDER = '__private__'
 PRIVATE_STATIC_URL = '/private-static/'
 
-STATICFILES_SERVING_BY_DJANGO = True
-STATICFILES_SERVING_BY_NGINX = False
+STATICFILES_SERVING_BY_DJANGO = False
+STATICFILES_SERVING_BY_NGINX = True

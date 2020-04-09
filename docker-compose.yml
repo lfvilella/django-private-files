@@ -1,8 +1,9 @@
-version: '3.7' 
-services: 
+version: '3.7'
+services:
+
   backend:
-    build: app 
-    ports: 
+    build: app
+    ports:
       - '8000'
     volumes:
       - .:/deploy
@@ -22,6 +23,8 @@ services:
       - ./collectstatic:/collectstatic
     ports:
       - 80:80
+    extra_hosts:
+      private-files.internal: 127.0.0.1
     networks:
       - backnet
       - nginx-gateway
