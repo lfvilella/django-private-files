@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from environs import Env
+from dotenv import load_dotenv
+from dotenv import find_dotenv
+
+
+env = Env()
+load_dotenv(find_dotenv())
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +29,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#^fo)cj%g14*a#@-t)4fmr^jj=np%+8p1jqjr=o464^d9##h=b'
+SECRET_KEY = env("SECRET_KEY", '#^fo)cj%g14*a#@-t)4fmr^jj=np%+8p1jqjr=o464^d9##h=b')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env.bool("DEBUG", True)
 
-ALLOWED_HOSTS = ['localhost']
+
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", [])
 
 
 # Application definition
@@ -130,5 +140,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..', 'collectstatic')
 PRIVATE_STATICFILES_FOLDER = '__private__'
 PRIVATE_STATIC_URL = '/private-static/'
 
-STATICFILES_SERVING_BY_DJANGO = False
-STATICFILES_SERVING_BY_NGINX = True
+STATICFILES_SERVING_BY_DJANGO = env.bool("STATICFILES_SERVING_BY_DJANGO", False)
+STATICFILES_SERVING_BY_NGINX = env.bool("STATICFILES_SERVING_BY_NGINX", True)

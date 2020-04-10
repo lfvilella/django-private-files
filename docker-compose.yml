@@ -10,7 +10,7 @@ services:
     working_dir: /deploy/app
     stdin_open: true
     tty: true
-    # command: ["/bin/bash"]
+    command: ${RUNSERVER:-/deploy/run.sh}
     networks:
       - backnet
 
