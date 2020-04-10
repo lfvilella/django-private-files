@@ -19,16 +19,22 @@ services:
     restart: always
     depends_on:
       - backend
+    environment:
+      # these variables will be used by the global nginx proxy
+      VIRTUAL_HOST: "${VIRTUAL_HOST}"
+      VIRTUAL_HOST_ALIAS: "${VIRTUAL_HOST_ALIAS}"
+      LETSENCRYPT_HOST: "${LETSENCRYPT_HOST}"
+      LETSENCRYPT_EMAIL: "${LETSENCRYPT_EMAIL}"
     volumes:
       - ./collectstatic:/collectstatic
     ports:
-      - 80:80
+      - "${APP_HOST_PORT}80"
     extra_hosts:
       private-files.internal: 127.0.0.1
     networks:
       - backnet
-      - nginx-gateway
+      - nginx-global-gateway
 
 networks:
   backnet:
-  nginx-gateway:
+  nginx-global-gateway:
