@@ -7,6 +7,12 @@
     {% block extra_head %}{% endblock %}
   </head>
   <body>
+    {% block menu %}
+      <a href="{% url 'frontend:url_home' %}">Home</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'frontend:url_private_page' %}">Private Page</a>
+      {% endif %}
+    {% endblock %}
     {% block content %}{% endblock %}
     {% block js %}{% endblock %}
   </body>

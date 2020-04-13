@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
+{% load static_private %}
 
 {% block content %}
-<img src="/private-static/private.png" alt="My private image">
+<img src="{% static_private 'private.png' %}" alt="My private image">
 {% endblock %}

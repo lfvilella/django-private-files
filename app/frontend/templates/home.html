@@ -2,5 +2,8 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    User logged in.
+{% endif %}
 <img src="{% static 'public/free.png' %}" alt="My free image">
 {% endblock %}
