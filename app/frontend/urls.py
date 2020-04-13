@@ -1,3 +1,4 @@
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.urls import path, re_path
 from . import views
@@ -15,5 +16,15 @@ urlpatterns = [
     re_path(
         '^' + settings.PRIVATE_STATIC_URL.replace('/', '') + '/',
         views.ProtectedFileView.as_view(),
+    ),
+    path(
+        'login',
+        auth_views.LoginView.as_view(template_name='login.html'),
+        name='url_login'
+    ),
+    path(
+        'logout',
+        auth_views.LogoutView.as_view(),
+        name='url_logout'
     ),
 ]
