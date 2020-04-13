@@ -9,4 +9,7 @@ urlpatterns = [
 ]
 
 if settings.STATICFILES_SERVING_BY_DJANGO:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(
+        settings.STATIC_URL,
+        document_root=settings.STATIC_ROOT,
+    )

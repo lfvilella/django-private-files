@@ -25,10 +25,14 @@ class ProtectedFileView(View):
     def _serve_staticfile_by_django(self, request):
         url_file_path = self._extract_file_path_from_url(request)
         for _dir in settings.STATICFILES_DIRS:
-            filepath = os.path.join(_dir, settings.PRIVATE_STATICFILES_FOLDER, url_file_path)
+            filepath = os.path.join(
+                _dir, settings.PRIVATE_STATICFILES_FOLDER, url_file_path,
+            )
             if not os.path.isfile(filepath):
                 continue
-            return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
+            return serve(
+                request, os.path.basename(filepath), os.path.dirname(filepath),
+            )
 
     def _serve_staticfile_by_nginx(self, request):
         url_file_path = self._extract_file_path_from_url(request)
