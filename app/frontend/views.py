@@ -9,12 +9,8 @@ from django.views.generic import TemplateView
 from django.views.static import serve
 
 
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-
-
-class PrivatePageView(LoginRequiredMixin, TemplateView):
-    template_name = 'private.html'
+class TemplateViewLoginRequired(LoginRequiredMixin, TemplateView):
+    pass
 
 
 class ProtectedFileView(View):

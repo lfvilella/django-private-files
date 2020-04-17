@@ -6,10 +6,10 @@ from . import views
 app_name = 'frontend'
 
 urlpatterns = [
-    path('', views.HomePageView.as_view(), name='url_home'),
+    path('', views.TemplateView.as_view(template_name='home.html'), name='url_home'),
     path(
-        'private-page',
-        views.PrivatePageView.as_view(),
+        'private-page/',
+        views.TemplateViewLoginRequired.as_view(template_name='private.html'),
         name='url_private_page',
     ),
 
@@ -18,12 +18,12 @@ urlpatterns = [
         views.ProtectedFileView.as_view(),
     ),
     path(
-        'login',
+        'login/',
         auth_views.LoginView.as_view(template_name='login.html'),
         name='url_login'
     ),
     path(
-        'logout',
+        'logout/',
         auth_views.LogoutView.as_view(),
         name='url_logout'
     ),

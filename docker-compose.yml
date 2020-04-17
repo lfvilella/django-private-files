@@ -33,8 +33,10 @@ services:
       private-files.internal: 127.0.0.1
     networks:
       - backnet
-      - nginx-global-gateway
+      - nginx-gateway
 
 networks:
   backnet:
-  nginx-global-gateway:
+  nginx-gateway:
+    external:
+      name: nginx-gateway
